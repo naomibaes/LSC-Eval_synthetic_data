@@ -3,41 +3,59 @@
 ## Title: Synthetic SIB Datasets
 
 **Description**:
-This repository contains scripts to scrape a corpus of articles from "The New York Times Developer Network". Possible year ranges are from 1851 to yesterday, and the code extracts articles for every month in each year. It is intended for research and analysis purposes, providing a comprehensive snapshot of NYT content for the desired period. 
-- *Note*: Due to the NYT Terms of Service, full-text articles are unavailable and so only snippets, lead paragraphs, and titles can be scraped (as of 23/07/2024).
-- *Note*: This is the order of scripts to run to compile your own NYT corpus:
-    1)  "data_downloading.ipynb"
-        - *Aim*: This script retrieves article data from the NYT archive API for a user specified year range and saves it to a file of each month's data before concatenating all individual files into a single CSV file.
-        - *Note*: You must have the "get_corpus.py" file in our repo for this script to run.
-    3)  "corpus_descriptives.ipynb"
-        - *Aim*: This script retrieves article data from the NYT archive API for a user specified year range and saves it to a file of each month's data before concatenating all individual files into a single CSV file.
+This information sheet describes the synthetic datasets simulating Sentiment, Intensity, and Breadth for the psychology domain, followig the pipeline outlined in stage 1 of LSC-Eval, an evaluation framework introduced in https://arxiv.org/abs/2503.08042
 
 ## Data Collection Methodology
 
-- **Source**: Input sentences come from the academic psychology corpus: 
+- **Source**: Input sentences come from the academic psychology corpus: https://github.com/naomibaes/psychology_corpus
 - **Time Frame**: 1970-2019
 
 ## Data Structure 
-- **Format**: csv
-- **Columns**: `['title', 'section_name', 'snippet', 'lead_paragraph', 'year', 'month', 'web_url']`
-- **Schema**:
-  - `title`: Title of the article
-  - `section_name`: Section of the newspaper (e.g., World, Business)
-  - `snippet`: Snapshot of the article
-  - `lead_paragraph`: Leading paragraph of the article
-  - `year`: Year in which the article was published
-  - `month`: Month in which the article was published
-  - `web_url`: Article URL
- 
-  - ### Example Dataset: Semantic Variation in Abuse-Related Language
 
-| **Baseline** | **Positive Variation** | **Negative Variation** |
+- **Format**: csv
+- **Time slicing**:
+    - 5-year: random samples of up to 1,500 sentences from each 5-year time slices in the corpus period (1970-2019) (time is labelled in the file name)
+    - all-year: dataset merging the sentences from the 5-year samples above (not labelling time)
+      
+### Synthetic Sentiment
+- **Columns**: `['baseline', 'negative_variation', 'positive_variation']`
+- **Schema**:
+  - `baseline`: Randomly sampled input neutral corpus sentences to vary/induce semantic change in.
+  - `negative_variation`: Output sentences once the LLM varies the input sentence to contain more negative sentiment
+  - `positive_variation`: Output sentences after the LLM varies the input sentence to contain more positive sentiment
+ 
+  - ### Example Dataset: Semantic Variation in Abuse Contexts (Sentences) 1970-1974
+
+| **baseline** | **negative_variation** | **positive_variation** |
 |--------------|-------------------------|-------------------------|
 | This paper attempts to show how a public health measure, by reducing production and withdrawing methylamphetamine (Methedrine) from retail pharmacists, dramatically affected the prevalence of its abuse in a provincial population. | This paper attempts to show how a public health measure, by reducing production and withdrawing methylamphetamine (Methedrine) from retail pharmacists, beneficially impacted the way individuals address its abuse in a provincial population. | This paper attempts to show how a public health measure, by reducing production and withdrawing methylamphetamine (Methedrine) from retail pharmacists, severely curbed the devastating prevalence of its abuse in a provincial population. |
 | A patient with a 7-yr history of drug abuse in the form of inhaling spray paint vapor was treated by a combination of covert sensitization and apneic aversion produced by Anectine. | A patient with a 7-yr history of drug abuse in the form of inhaling spray paint vapor was treated with innovative approaches like covert sensitization and apneic aversion produced by Anectine, showing potential for positive recovery. | A patient with a 7-yr history of drug abuse in the form of inhaling spray paint vapor was treated by a combination of harsh covert sensitization and distressing apneic aversion produced by Anectine. |
 | Child abuse has lately reached epidemic proportions, with the most severe cases occurring in children under three years of age. | Child abuse awareness has lately reached significant proportions, with increased efforts focused on protecting children under three years of age. | Child abuse has lately escalated to epidemic proportions, with the most tragic cases occurring in children under three years of age. |
 
+### Synthetic Intensity
+- **Columns**: `['baseline', 'high_intensity', 'low_intensity']`
+- **Schema**:
+  - `baseline`: Randomly sampled natural corpus sentences to vary/induce semantic change in.
+  - `high_intensity`: Output sentences once the LLM varies the input sentence to contain higher intensity
+  - `low_intensity`: Output sentences once the LLM varies the input sentence to contain lower intensity
+ 
+  - ### Example Dataset: Semantic Variation in Abuse-Related Language
 
+| **baseline** | **high_intensity** | **low_intensity** |
+|--------------|-------------------------|-------------------------|
+| A sample of 153 men with alcohol abuse drawn from a population census study was divided in one group of men whose abuse was officially registered (0-group) and another where the abuse was known from other sources (A-group). | A sample of 153 men with **severe** alcohol abuse drawn from a population census study was divided into one group of men whose abuse was officially registered (0-group) and another where the abuse was **notoriously** known from other sources (A-group). | A sample of 153 men with **mild** alcohol abuse drawn from a population census study was divided into one group of men whose abuse was officially registered (0-group) and another where the abuse was **discreetly** known from other sources (A-group). |
+| Judges recorded the concurrent undesirable social responses of: (a) verbal abuse and (b) aggression, withdrawal, and inattention. | Judges recorded the concurrent **shocking** social responses of: (a) verbal abuse and (b) **intense aggression**, **alarming withdrawal**, and **troubling inattention**. | Judges recorded the concurrent **mild** social responses of: (a) verbal abuse and (b) **slight aggression**, **minor withdrawal**, and **minimal inattention**. |
+| This measure coincided with the midpoint of a four-year survey into drug abuse which was being carried out in that area. | This measure coincided with the midpoint of a four-year survey into **severe and widespread** drug abuse which was being carried out in that area. | This measure coincided with the midpoint of a four-year survey into **occasional instances** of drug abuse which was being carried out in that area. |
+
+### Synthetic Breadth
+- **Columns**: `['sentence', 'label', 'year']`
+- **Schema**:
+  - `sentence`: Sentence containing the co-hyponym that is randomly sampled from the natural corpus.
+  - `label`: "synthetic_" signifies that it is a co-hyponym context (sentence) and the next part labels the co-hyponym (it is replaced with the target term due to the replacement strategy approach).
+  - `year`: Year from which the sentence is randomly sampled from in the corpus
+ 
+  - ### Example Dataset: Semantic Variation in Abuse-Related Language
+    
 ## Data Volume 
 - *Note*: Information pertains to the final cleaned "nyt_corpus.csv" dataset that we compiled within the specified year range.
 
