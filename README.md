@@ -1,4 +1,4 @@
-﻿# Synthetic-LSC Pipeline: Synthetic datasets for dimensons of lexical semantic change (LSC) generated using the LSC-Eval framework
+﻿# Synthetic-LSC Pipeline: Synthetic datasets for dimensons of lexical semantic change generated using the LSC-Eval framework
 
 ## Summary
 
