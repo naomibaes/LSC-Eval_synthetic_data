@@ -107,11 +107,13 @@ This data statement provides a comprehensive overview of the synthetic SIB datas
 
 ### Quality and Limitations:
 - **Quality Control**:
-  - **Validation:** Note that the synthetic Sentiment and Intensity datasets underwent validation checks and subsequent cleaning due to challenges in maintaining target terms in the sentences, particularly for positive sentiment variations (Sentiment=0.25%; Intensty=0.01%). Fewer manual adjustments were needed for Intensity than Sentiment. With the temperature parameter set at 1.00, GPT-4o struggled to vary a few of the sentences to contain more positive sentiment for abuse (28), anxiety (110), depression (46), mental_health (1), trauma (2) as it replaced targets with positive terminology against instructions. For Intensity data, fewer sentences required manual alteration: only for abuse (4), depression (2), mental_health (2), trauma (1). Rows (196) were detected and manually altered to retain the target term while ensuring variation in the dimension relative to the neutral sentence. Experimenting with lowering the temperature setting might override this error rate issue (although it should be emphasized that the number of errors were low). The final validated datasets are provided in this repository. *NOTE:* Experimenting with the temperature setting (to ensure an optimal trade-off between creative:deterministic responses) may reduce this error rate.
+  - **Validation:** Note that the synthetic Sentiment and Intensity datasets underwent validation checks and subsequent cleaning due to challenges in maintaining target terms in the sentences, particularly for positive sentiment variations (Sentiment=0.25%; Intensty=0.01%).
+    - Fewer manual adjustments were needed for Intensity than Sentiment. With the temperature parameter set at 1.00, GPT-4o struggled to vary a few of the sentences to contain more positive sentiment for abuse (28), anxiety (110), depression (46), mental_health (1), trauma (2) as it replaced targets with positive terminology against instructions. For Intensity data, fewer sentences required manual alteration: only for abuse (4), depression (2), mental_health (2), trauma (1). Rows (196) were detected and manually altered to retain the target term while ensuring variation in the dimension relative to the neutral sentence. Experimenting with lowering the temperature setting might override this error rate issue (although it should be emphasized that the number of errors were low). The final validated datasets are provided in this repository.
+    - *NOTE:* Experimenting with the temperature setting (to ensure an optimal trade-off between creative:deterministic responses) may reduce this error rate.
 
 - **Limitations**:
   - The LLM-generated synthetic sentences may reflect biases inherent in GPT 4-o
-  - See the original paper for more: https://arxiv.org/abs/2503.08042
+  - See the original paper for more considerations: https://arxiv.org/abs/2503.08042
 
 ### Ethical Considerations:
 - It is important to understand the method and how these sentences were generated to assess their efficacy for your use case.
