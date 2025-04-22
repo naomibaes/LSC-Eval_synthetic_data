@@ -122,7 +122,7 @@ This data statement provides a comprehensive overview of the synthetic SIB datas
 - All co-authors in the original paper: Raphael Merx, Nick Haslam, Ekaterina Vylomova, Haim Dubossarsky.
 
 ### Contact Information:
-- **Emil**: [naomi_baes@hotmail.com](mailto:naomi_baes@hotmail.com)
+- **Email**: [naomi_baes@hotmail.com](mailto:naomi_baes@hotmail.com)
 
 ### Citation:
 Please cite the paper which introduces the evaluation framework and pipeline (first stage of the framework) to generate these datasets as follows:
