@@ -39,15 +39,13 @@ Procedure:
 
 #### Elaboration of ICL procedure for Synthetic-LSC Pipeline
 
-To get the input sentences which are randomly sampled from the natural corpus, the neutral range is adjusted from the median of each dataset by ±0.01, targeting 25th-75th percentile bounds or 500-1500 unique sentences per epoch. See Figures 6 and 7 for a breakdown of neutral sentence counts per epoch provided as input to the LLM using the prompts below. Utlimately, 36,151 and 39,896 neutral baseline sentences are used to simulate changes in Sentiment and Intensity, respectively.
+To get the input sentences which are randomly sampled from the natural corpus, the neutral range is adjusted from the median of each dataset by ±0.01, targeting 25th-75th percentile bounds or 500-1500 unique sentences per epoch. See Figures 6 and 7 for a breakdown of neutral sentence counts per epoch provided as input to the LLM using the prompts below. Utlimately, 36,151 and 39,896 neutral baseline sentences are input to the LLM using the prompts below to simulate changes in Sentiment and Intensity, respectively.
 
 ![alt text](image-1.png)
 
 For each neutral sentence, one inference call to GPT-4o is made through the OpenAI API to generate variations of increased and decreased Sentment or Intensity. The sentence generation prioritized quality and maintained a neutral baseline to allow for adequate variation. 
 
 ![alt text](image-2.png)
-
-**Validation:** Note that there were challenges in maintaining target terms in the sentences, particularly for positive sentiment variations. Fewer manual adjustments were needed for Intensity than Sentiment. With the temperature parameter set at 1.00, GPT-4o struggled to vary a few of the sentences to contain more positive sentiment for abuse (28), anxiety (110), depression (46), mental_health (1), trauma (2) as it replaced targets with positive terminology against instructions. For Intensity data, fewer sentences required manual alteration: only for abuse (4), depression (2), mental_health (2), trauma (1). Rows (196) were detected and manually altered to retain the target term while ensuring variation in the dimension relative to the neutral sentence. Experimenting with lowering the temperature setting might override this error rate issue (although it should be emphasized that the number of errors were low). The final validated datasets are provided in this repository.
 
 ### Synthetic Breadth
 
