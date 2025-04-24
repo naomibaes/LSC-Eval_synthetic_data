@@ -59,6 +59,8 @@ To sample representatively from the sibling list, a round-robin strategy is used
 
 ### Synthetic SIB Datasets for Psychology Examples
 
+**Information sheet:** https://github.com/naomibaes/Synthetic-LSC_pipeline/blob/main/information_sheet_synthetic_SIB_psychology.md
+
 **Domain:** Academic Psychology (Scientific Article Abstracts)
 
 **Targets:** *abuse*, *anxiety*, *depression*, *mental health*, *mental illness*, *trauma*
