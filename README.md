@@ -4,7 +4,7 @@
 
 **Aim**: This repository houses the scripts to generate diachronic synthetic datasets for dimensions of LSC and the resulting output files. It accompanies the original paper in which we introduce the three-stage evaluation framework, "LSC-Eval": https://arxiv.org/abs/2503.08042
 
-**Acknowledgement**: [Naomi Baes](naomibaes.github.io) and [Raphael Merx](https://www.rapha.dev/) primarily worked on the LLM-generated synthetic data pipeline under the guidance of Haim Dubossarsky, Ekaterina Vylomova and Nick Haslam.
+**Acknowledgement**: [Naomi Baes]([naomibaes.github.io](https://naomibaes.github.io/)) and [Raphael Merx](https://www.rapha.dev/) primarily worked on the LLM-generated synthetic data pipeline under the guidance of Haim Dubossarsky, Ekaterina Vylomova and Nick Haslam.
 
 **Application**: Currently, the "Synthetic-LSC Pipeline" has only been applied in the psychology domain drawing from 6 psychology examples, for which synthetic SIB (Sentiment, Intensity, Breadth) datasets are provided. See this information sheet for details regarding these datasets: https://github.com/naomibaes/Synthetic-LSC_pipeline/blob/main/information_sheet_synthetic_SIB_psychology.md
 
